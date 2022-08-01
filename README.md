@@ -6,7 +6,16 @@
 node_modules should be added to .dockerignore. The Docker image size will be huge if this step is ignored.
 #### Step 4: Create a docker image
 `docker build -t react-image .`
- 
+#### Step 5: Create a container from the `react-image` created in Step 4. <br />
+`docker run -d -p 8092:4100 --name react-app react-image` <br />
+-d for detach mode. The process runs in background. <br />
+-p is to specify the port. This frontend app runs on port 4100 and we have specified port 8092 for our container. <br />
+
+The command runs successfully, and the docker container can be accessed through localhost port 8092 `http://127.0.0.1:8092/`.
+
+![image](https://user-images.githubusercontent.com/110366380/182075567-74d0343e-cad2-4b59-a328-becf4eb0fd6e.png)
+
+
 
 # Frontend Cloned from:
 
