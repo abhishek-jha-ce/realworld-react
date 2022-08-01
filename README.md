@@ -46,5 +46,12 @@ We can check that both the containers are running, using `docker ps` command:
 ![image](https://user-images.githubusercontent.com/110366380/182098540-a9685bac-1a7f-4994-b23e-edc54f076795.png)
 
 
+#### Step 10: Adding a User
+
+The backend app doesn't have any user yet, we can create one by accessing the container bash interface: `docker exec -it realworld-react_backend_1 bash`
+
+##### To add the user: Use `python manage.py createsuperuser`
+
+![image](https://user-images.githubusercontent.com/110366380/182103632-e6b3922c-d462-4249-a240-fb7b134090e2.png)
 
 
