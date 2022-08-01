@@ -1,0 +1,43 @@
+version: '3'
+services:
+  # Setup local instance of the Backend Server
+  backend:
+    # Public image in docker hub for Django backend server
+    image: realworldio/django-drf:latest
+
+    # Setting up the network for communication
+    networks:
+      - reactdrf
+  
+    # Volumes for storage
+    volumes:
+      - drf-backend:/drf_src
+
+    # Specifying the port. We want to access it by visiting localhost:8199
+    ports:
+      - "8199:8080"
+  
+  # Setup the front end instance called web for the react app
+  web:
+    # We already have an image of this in the local directory
+    build: .
+    depends_on:
+      - backend
+    
+    # Mount the container `/drf` folder to the app folder of the Dockerfile
+    volumes:
+      - drf-react:/app 
+    restart: always
+
+    ports:
+      - "8081:4100"
+    
+    networks:
+      - reactdrf
+
+networks:
+  reactdrf:
+
+volumes:
+  drf-backend:
+  drf-react:
