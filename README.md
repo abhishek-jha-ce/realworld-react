@@ -26,7 +26,25 @@ The command runs successfully, and the docker container can be accessed through 
 `docker run -d -p 8099:8000 --name <container name> realworldio/django-drf` <br />
 ##### We also have to update the API url in the React app to match the localhost port for the backend Django app.
 
-#### Step 6: Using Docker Compose to Setup Local Backend.
+### Using Docker Compose to Setup Local Backend.
 Instead of manually setting up a backend server, We use Docker Compose to set up the link between two containers instead of manually running various containers.
+
+#### Step 6: The image for the realworldio django backend app is available on the docker hub.
+`docker pull realworldio/django-drf` <br />
+we can also link this image directly in the docker compose file, so this step is optional.
+
+#### Step 7: Create a `docker-compose.yml` file.
+
+#### Step 8: Update the API URL for the app
+In `src/agent.js`, we have to change `API_ROOT` to the local host URL: `http://localhost:8199/api`. `Port 8199` is the port we specified to access the backend.
+
+#### Step 9: Build and Run the Containers
+`docker-compose up -d` <br />
+
+We can check that both the containers are running, using `docker ps` command:
+
+![image](https://user-images.githubusercontent.com/110366380/182098540-a9685bac-1a7f-4994-b23e-edc54f076795.png)
+
+
 
 
