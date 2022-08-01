@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package.json .
 
 # Install any needed packages from package.json
-RUN npm Install
+RUN npm install
 
 # Copy the rest of the files, Installed separately for optimization
 COPY . .
